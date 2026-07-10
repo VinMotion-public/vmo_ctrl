@@ -1,0 +1,96 @@
+FSM: "Standing"
+
+head:
+  kp: [20, 20]
+  kd: [4, 4]
+  default_joint_pos: [0.0, 0.0]
+
+waist:
+  kp: [100]
+  kd: [20]
+  default_joint_pos: [0.0]
+
+leg:
+  kd_stance: [10, 17, 10, 17, 3, 3]
+  kp_limit: [0, 0, 0, 40, 0, 0]
+  kd_limit: [0, 0, 0, 2, 0, 0]
+
+arm:
+  kp: [100, 100, 80, 80, 80, 80, 80]
+  kd: [5, 5, 5, 5, 5, 5, 5]
+  ki: [0, 0, 0, 0, 0, 0, 0]
+
+  default_joint_pos: [0.1,  0.1,  -0.25, -0.2, 0.0, 0.0, 0.0,
+                      0.1, -0.1,  0.25, -0.2, 0.0, 0.0, 0.0]
+
+vD:
+  Vx: [-0.5, 0.5]
+  Vy: [-0.3, 0.3]
+  Vz: [-0.05, 0.05]
+  Wz: [-1.2, 1.2]
+
+transition_check:
+  min_height: 0.8
+  max_userCmd_ly: 0.01
+  transit_time: 750
+  v_x_threshold: 0.05
+  v_y_threshold: 9.9
+  v_z_threshold: 0.1
+  v_yaw_threshold: 0.05 
+
+mpc:
+  # initialization
+  iter_mpc: 45
+  phase_offset: [0, 0]
+  contact_duration: [10, 10]
+
+  # swingheight
+  swing_height: 0.1
+
+  # foot placement
+  foot_x: -0.04
+  wide: 0.24
+  p_rel_max: 0.15
+  pfx_rel_gain1: 0.15
+  pfx_rel_gain2: 0.01
+  pfy_rel_gain1: 0.15
+  pfy_rel_gain2: 0.01
+  Pf_gain1: 1
+  Pf_gain2: 1
+  Pf_gain3: 1
+  Pf_gain4: 1
+  Pf2: -0.02
+  
+  Q: [260.0, 260, 100, 250, 250, 120, 5, 5, 5, 5, 5, 4]
+
+  alpha: [1e-4, 1e-4, 1e-5,
+          1e-4, 1e-4, 1e-5,
+          1e-3, 1e-3, 1e-3,
+          1e-3, 1e-3, 1e-3]
+
+  # COM and pose
+  roll_comp_gain1: 0.13
+  roll_comp_gain2: 0.13
+  roll_comp_const: 0.0
+  pitch_comp_gain: 0.18
+  pitch_comp_const: 0.03
+  xStart_gain: 1.0
+  yStart_gain: 1.0
+  xStart_const: 0.0
+  yStart_const: 0.0
+  offsetXY_gain1: 0.03
+  offsetXY_gain2: 0.0
+  trajInitialZ: 0.99
+
+#M2.2 #3
+pr_trigger:
+  backtoStanding_time: 68
+  pCOM_body_0: [-0.02, 0.13]
+  pCOM_body_1: [-0.05, 0.05]
+  vCOM_body_0: [-0.4, 0.4]
+  vCOM_body_1: [-0.9, 0.9]
+  rpy_0: [-0.06, 0.06]
+  rpy_1: [-0.045, 0.06]
+  omega_body_0: [-1.1, 1.1]
+  omega_body_1: [-1.1, 1.1]
+  abs_vBody_norm_threshold: 1.8
