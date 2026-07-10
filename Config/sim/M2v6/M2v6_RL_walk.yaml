@@ -1,0 +1,100 @@
+FSM: "RL_walk"
+
+head:
+  kp: [20, 20]
+  kd: [4, 4]
+  default_joint_pos: [0.0, 0.0]
+
+waist:
+  kp: [100]
+  kd: [20]
+  default_joint_pos: [0.0]
+
+leg:
+  kd_stance: [10, 10, 10, 10, 2, 2]
+
+arm:
+  kp: [40, 40, 40, 40, 20, 20, 20]
+  kd: [5, 5, 5, 5, 3, 3, 3]
+  default_joint_pos: [0.0, 0.2, 0.0, -1.0, 0.0, 0.0, 0.0,
+                      0.0, -0.2, 0.0, -1.0, 0.0, 0.0, 0.0]
+
+#-------------- move forward ------------------
+vD:
+  Vx: [-0.7, 0.7]
+
+vel_cmd: [0.4, 0.0, 0.0] # [vx, vy, wz]
+vel_cmd_policy_vx_range: [0.45, 0.6] # proportional |vx| mapping after threshold
+distance: 10
+#----------------------------------------------
+
+#-------------- move backward -----------------
+# vD:
+#   Vx: [-0.5, 0.5]
+
+# vel_cmd: [-0.5, 0.0, 0.0] # [vx, vy, wz]
+# vel_cmd_policy_vx_range: [0.45, 0.6] # proportional |vx| mapping after threshold
+# distance: 10
+#----------------------------------------------
+
+#-------------- turn --------------------------
+# vD:
+#   Wz: [-1.5, 1.5]
+
+# vel_cmd: [0.0, 0.0, -0.8] # [vx, vy, wz]
+# vel_cmd_policy_wz_range: [1.0, 1.5] # proportional |wz| mapping after threshold
+# distance: 55
+#----------------------------------------------
+
+#-------------- side step ---------------------
+# vD:
+#   Vy: [-0.5, 0.5]
+
+# vel_cmd: [0.0, -0.1, 0.0] # [vx, vy, wz]
+# vel_cmd_policy_vy_range: [0.4, 0.7] # proportional |vy| mapping after threshold
+# distance: 10
+#----------------------------------------------
+
+#-------------- slope -------------------------
+# vD:
+#   Vx: [-1.5, 1.5]
+#   Wz: [-1.5, 1.5]
+
+# vel_cmd: [0.4, 0.0, 0.0] # [vx, vy, wz]
+# vel_cmd_policy_vx_range: [0.75, 1.5] # proportional |vx| mapping after threshold
+# distance: 50
+
+# yaw_pd:
+#   enabled: true
+#   target_yaw_offset: 0.0 # rad, relative to yaw when entering RL_walk
+#   kp: 30.0
+#   kd: 0.5
+#----------------------------------------------
+
+warm_up_time: 4
+
+transition_check:
+  min_height: 0.8
+  max_userCmd_ly: 0.01
+  transit_time: 2000
+  v_x_threshold: 0.4
+  # v_x_threshold: 0.2
+  v_y_threshold: 0.2
+  v_z_threshold: 0.0
+  v_yaw_threshold: 0.8
+
+pr_return:
+  vBodyHip_norm_threshold: 0.6
+  pCOM_body_0: [-0.06, 0.11]
+  pCOM_body_1: [-0.08, 0.08]
+  vCOM_body_0: [-0.4, 0.4]
+  vCOM_body_1: [-0.3, 0.3]
+  rpy_0: [-0.1, 0.1]
+  rpy_1: [-0.15, 0.15]
+  omega_body_0: [-0.4, 0.4]
+  omega_body_1: [-0.4, 0.4]
+  x_wide: 0.05
+  y_wide: [0.25, 0.45]
+  foot_angle_0: [-0.1, 0.1]
+  foot_angle_1: [-0.1, 0.1]
+  pr_min_duration: 250

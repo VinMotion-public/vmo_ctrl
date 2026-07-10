@@ -1,0 +1,51 @@
+FSM: "RL_walk"
+
+head:
+  kp: [20, 20]
+  kd: [4, 4]
+  default_joint_pos: [0.0, 0.0]
+
+waist:
+  kp: [100]
+  kd: [20]
+  default_joint_pos: [0.0]
+
+leg:
+  kd_stance: [10, 10, 10, 10, 2, 2]
+
+arm:
+  kp: [40, 40, 40, 40, 20, 20, 20]
+  kd: [5, 5, 5, 5, 3, 3, 3]
+  default_joint_pos: [0.0, 0.2, 0.0, -1.0, 0.0, 0.0, 0.0,
+                      0.0, -0.2, 0.0, -1.0, 0.0, 0.0, 0.0]
+
+vD:
+  Vx: [-0.5, 0.5]
+  Vy: [-0.3, 0.3]
+  Vz: [-0.05, 0.05]
+  Wz: [-1.2, 1.2]
+
+transition_check:
+  min_height: 0.8
+  max_userCmd_ly: 0.01
+  transit_time: 2000
+  v_x_threshold: 0.3
+  v_y_threshold: 0.05
+  v_z_threshold: 0.0
+  v_yaw_threshold: 0.7
+
+pr_return:
+  vBodyHip_norm_threshold: 0.6
+  pCOM_body_0: [-0.06, 0.11]
+  pCOM_body_1: [-0.08, 0.08]
+  vCOM_body_0: [-0.4, 0.4]
+  vCOM_body_1: [-0.3, 0.3]
+  rpy_0: [-0.1, 0.1]
+  rpy_1: [-0.15, 0.15]
+  omega_body_0: [-0.5, 0.5]
+  omega_body_1: [-0.5, 0.5]
+  x_wide: 0.04
+  y_wide: [0.25, 0.45]
+  foot_angle_0: [-0.1, 0.1]
+  foot_angle_1: [-0.1, 0.1]
+  pr_min_duration: 350
