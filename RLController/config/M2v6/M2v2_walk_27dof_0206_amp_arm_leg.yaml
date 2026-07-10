@@ -1,0 +1,71 @@
+# Model / IO
+model_path: "../RLController/Checkpoints/M2v6/locomotion/2026-02-05_18-40-13_amp_0_1_walkTienKung_kneeElbow/policy_30500.onnx"
+input_name: "obs"
+output_name: "actions"
+stacked_input: false          # {1, T, D} if true, else {1, T*D}
+
+# Dimensions
+dof: 27
+obs_per_frame: 90
+num_frames: 10
+
+# Inference frequency
+decimation: 10            # run policy every N ticks
+dt: 0.002                 
+
+# Feature scales
+scales:
+  command_lin: 1.0
+  command_ang: 1.0
+  dof_pos: 1.0
+  dof_vel: 1.0
+  angular_vel: 1.0
+  euler: 1.0
+  cycle_time: 1.0
+
+# Command normalization (for invNormalize)
+command_norm:
+  vx:   {min: -1.0, max:  1.0, minLim: -1.0, maxLim: 1.0, offset: 0.05, acc: 0.005}
+  vy:   {min: -0.25, max:  0.25, minLim: -0.5, maxLim: 0.5, offset: 0.05, acc: 0.1}
+  yaw:  {min: -0.5, max:  0.5, minLim: -0.5, maxLim: 0.5, offset: 0.05, acc: 1.0}
+
+command_mixer:
+  vx_scale: 1.0
+  yaw_scale: 1.0
+
+# Joint defaults (23)
+default_joint_pos: [
+  -0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  -0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+   0.0,
+   0.2,  0.2,  0.0, -0.4, 0.0, 0.0, 0.0,
+   0.2, -0.2,  0.0, -0.4, 0.0, 0.0, 0.0,
+]
+
+# Action scales: either a scalar or a full list of 23
+action_scale: 0.25
+# action_scale: 0.2
+
+# Index maps (27)
+pos_map:    [0, 6, 12, 1, 7, 13, 20, 2, 8, 14, 21, 3, 9, 15, 22, 4, 10, 16, 23, 5, 11, 17, 24, 18, 25, 19, 26]
+vel_map:    [0, 6, 12, 1, 7, 13, 20, 2, 8, 14, 21, 3, 9, 15, 22, 4, 10, 16, 23, 5, 11, 17, 24, 18, 25, 19, 26]
+action_map: [0, 3, 7, 11, 15, 19, 1, 4, 8, 12, 16, 20, 2, 5, 9, 13, 17, 21, 23, 25, 6, 10, 14, 18, 22, 24, 26]
+
+# Gains
+legs:
+  kp: [80, 80, 40, 80, 20, 20]   # fallback
+  kd: [ 5.024,  5.024,  2.512,  5.024, 3, 3] # fallback
+
+waist:
+  kp: 40   # fallback
+  kd: 2.512    # fallback
+
+arms:
+  kp: [10, 10, 10, 10, 5,  5, 5]  # fallback
+  kd: [ 1.5,  1.5,  1.5,  1.5,  0.12, 0.12,  0.12]  # fallback
+
+rpyBias:
+  roll: 0.0
+  pitch: 0.0 # M2v3#1: -0.02 | M2v3#2: -0.01
+  yaw: 0.0
+
