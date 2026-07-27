@@ -1,0 +1,63 @@
+# Model / IO
+model_path: "../RLController/Checkpoints/M2v6/2026-05-11_17-47-00_push_recovery_x6devLeg_moreCalibRand_feetForce_dofAcc_3slide_penMoreAnkle/policy.onnx"
+input_name: "obs"
+output_name: "actions"
+stacked_input: false          # {1, T, D} if true, else {1, T*D}
+
+# Dimensions
+dof: 12
+obs_per_frame: 45
+num_frames: 10
+
+# Inference frequency
+decimation: 10            # run policy every N ticks
+dt: 0.002
+
+# Feature scales
+scales:
+  command_lin: 1.0
+  command_ang: 1.0
+  dof_pos: 1.0
+  dof_vel: 1.0
+  angular_vel: 1.0
+  euler: 1.0
+  cycle_time: 1.0
+
+# Command normalization (for invNormalize)
+command_norm:
+  vx:   {min: -1.0, max:  1.0, minLim: -1.0, maxLim: 1.0, offset: 0.05, acc: 0.01}
+  vy:   {min: -0.4, max:  0.4, minLim: -0.3, maxLim: 0.3, offset: 0.05, acc: 0.1}
+  yaw:  {min: -1.5, max:  1.5, minLim: -0.5, maxLim: 0.5, offset: 0.05, acc: 1.0}
+
+command_mixer:
+  vx_scale: 1.0
+  yaw_scale: 1.0
+
+default_joint_pos: [
+  -0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  -0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+]
+action_scale: 0.25
+
+
+# Index maps (27)
+pos_map:    [0,1,2,3,4,5,6,7,8,9,10,11]
+vel_map:    [0,1,2,3,4,5,6,7,8,9,10,11]
+action_map: [0,1,2,3,4,5,6,7,8,9,10,11]
+
+legs:
+  kp: [40.3172, 173.5483, 36.4142, 173.5483 , 24.4766, 24.4766]   # fallback
+  kd: [ 5.7750,  24.8589,  5.2159,  24.8589 , 3.5060, 3.5060] # fallback
+ 
+waist:
+  kp: 150.87   # fallback
+  kd: 3.16    # fallback
+
+arms:
+  kp: [27.87, 27.87, 27.87, 27.87, 1.93,  1.93, 1.93]  # fallback
+  kd: [ 1.9,  1.9,  1.9,  1.9,  0.16, 0.16,  0.16]  # fallback
+
+rpyBias:
+  roll: 0.0
+  pitch: 0.0 # M2v3#1: -0.02 | M2v3#2: -0.01
+  yaw: 0.0
