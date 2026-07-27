@@ -1,0 +1,34 @@
+FSM: "RL_push"
+
+head:
+  kp: [20, 20]
+  kd: [4, 4]
+  default_joint_pos: [0.0, 0.0]
+
+waist:
+  kp: [100]
+  kd: [20]
+  default_joint_pos: [0.0]
+
+leg:
+  kd_stance: [10, 10, 10, 10, 2, 2]
+
+arm:
+  kp: [50, 50, 50, 50, 40, 40, 40]
+  kd: [3, 3, 3, 3, 3, 3, 3]
+  default_joint_pos: [0.5, 0.2, 0.0, -1.0, 0.0, 0.0, 0.0,
+                      0.5, -0.2, 0.0, -1.0, 0.0, 0.0, 0.0]
+
+pr_return:
+  vBodyHip_norm_threshold: 0.3
+  pCOM_body_0: [-0.05, 0.1]
+  pCOM_body_1: [-0.05, 0.05]
+  vCOM_body_0: [-0.3, 0.3]
+  vCOM_body_1: [-0.3, 0.3]
+  rpy_0: [-0.1, 0.1]
+  rpy_1: [-0.2, 0.2]
+  omega_body_0: [-0.4, 0.4]
+  omega_body_1: [-0.4, 0.4]
+  x_wide: 0.05
+  y_wide: [0.15, 0.35]
+  pr_min_duration: 300
