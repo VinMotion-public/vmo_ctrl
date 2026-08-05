@@ -1,0 +1,13 @@
+FSM: "Passive"
+
+head:
+  kd: [4, 4]
+
+waist:
+  kd: [2]
+
+leg:
+  kd: [4, 4, 4, 4, 4, 4]
+
+arm:
+  kd: [2, 2, 2, 2, 2, 2, 2]
