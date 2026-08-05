@@ -1,0 +1,46 @@
+# Robot Configuration — M2v6 QCD (sim)
+robot_version: "M2v6"
+hand_type: 0
+control_mode: 1
+input_method: 1
+joystick_deadband: 0.5
+ankle_mode: 1
+total_dof: 29
+arm_dof: 7
+leg_dof: 6
+head_dof: 2
+waist_dof: 1
+dt: 0.002
+UDP_logger_ip: "127.0.0.1"
+motor_4_10_calib_value: 0
+motor_5_11_calib_value: 0
+walking_manual: false
+leg_command_disabled: false
+push_recovery_enable: true
+safety_feature: true
+safety_action: true
+
+IMUpos: [0.0, 0.0, -0.12153]
+rpyBias: [0.0, 0.0, 0.0]
+
+mass: 49
+lt: 0.15
+lh: 0.07
+lw: 0.04
+I_body: [4.518172, 0.000339, 0.082408,
+         0.000339, 4.086500, 0.001856,
+         0.082408, 0.001856, 0.55814]
+
+Kp1: 60
+Kp2: 60
+Kp3: 60
+Kd1: 3
+Kd2: 3
+Kd3: 3
+footSwingTrajectory: 1
+offsetZ_stand_gain: 0.03
+
+rl_yamls:
+  walk: "M2v6_walk_27dof_terrain_0605_mj_amp.yaml"
+  # walk: "M2v2_walk_27dof_0206_amp_arm_leg.yaml"
+  push: "M2v6_walk_12dof_0511_fixAnkle_mj.yaml"
