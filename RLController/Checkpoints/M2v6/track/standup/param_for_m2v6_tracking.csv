@@ -1,0 +1,11 @@
+Key,Value_1,Value_2,Value_3,Value_4,Value_5,Value_6,Value_7,Value_8,Value_9,Value_10,Value_11,Value_12,Value_13,Value_14,Value_15,Value_16,Value_17,Value_18,Value_19,Value_20,Value_21,Value_22,Value_23,Value_24,Value_25,Value_26,Value_27
+run_path,model_29999,,,,,,,,,,,,,,,,,,,,,,,,,,
+joint_names,left_hip_pitch_joint,left_hip_roll_joint,left_hip_yaw_joint,left_knee_joint,left_ankle_pitch_joint,left_ankle_roll_joint,right_hip_pitch_joint,right_hip_roll_joint,right_hip_yaw_joint,right_knee_joint,right_ankle_pitch_joint,right_ankle_roll_joint,waist_joint,left_shoulder_pitch_joint,left_shoulder_roll_joint,left_shoulder_yaw_joint,left_elbow_joint,left_wrist_yaw_joint,left_wrist_pitch_joint,left_wrist_roll_joint,right_shoulder_pitch_joint,right_shoulder_roll_joint,right_shoulder_yaw_joint,right_elbow_joint,right_wrist_yaw_joint,right_wrist_pitch_joint,right_wrist_roll_joint
+joint_stiffness,29.129,125.389,26.309,125.389,17.684,17.684,29.129,125.389,26.309,125.389,17.684,17.684,26.309,14.491,10.646,10.646,10.646,10.646,10.646,10.646,14.491,10.646,10.646,10.646,10.646,10.646,10.646
+joint_damping,4.909,21.130,4.434,21.130,2.980,2.980,4.909,21.130,4.434,21.130,2.980,2.980,4.434,2.442,1.794,1.794,1.794,1.794,1.794,1.794,2.442,1.794,1.794,1.794,1.794,1.794,1.794
+default_joint_pos,-0.000,0.000,0.000,0.000,-0.000,0.000,-0.000,0.000,0.000,0.000,-0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000
+command_names,motion,,,,,,,,,,,,,,,,,,,,,,,,,,
+observation_names,command,motion_anchor_ori_b,base_ang_vel,joint_pos,joint_vel,actions,,,,,,,,,,,,,,,,,,,,,
+action_scale,1.116,0.658,0.665,0.658,0.848,0.848,1.116,0.658,0.665,0.658,0.848,0.848,0.665,1.553,0.845,0.845,0.845,0.845,0.845,0.845,1.553,0.845,0.845,0.845,0.845,0.845,0.845
+anchor_body_name,pelvis_link,,,,,,,,,,,,,,,,,,,,,,,,,,
+body_names,pelvis_link,left_hip_roll_link,left_knee_link,left_ankle_roll_link,right_hip_roll_link,right_knee_link,right_ankle_roll_link,torso_link,left_shoulder_roll_link,left_elbow_link,left_wrist_roll_link,right_shoulder_roll_link,right_elbow_link,right_wrist_roll_link,,,,,,,,,,,,,
